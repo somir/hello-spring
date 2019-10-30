@@ -1,9 +1,12 @@
 pipeline {
-    agent { label 'any' }
+    agent { label 'master' }
     stages {
-        stage('hello') {
+        stage('getCode') {
             steps {
-                echo "Hello World!"
+                sh "mkdir -p hello-spring"
+                dir('hello-spring') {
+                    git branch: "master", url: "https://github.com/somir/hello-spring.git"
+                }
             }
         }
     }
