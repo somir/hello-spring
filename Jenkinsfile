@@ -9,5 +9,15 @@ pipeline {
                 }
             }
         }
+
+        stage('buildCode') {
+            steps {
+                dir('hello-spring') {
+                    sh "mvn clean install"
+                }
+            }
+        }
+
+
     }
 }
